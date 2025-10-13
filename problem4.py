@@ -15,9 +15,26 @@ It is widely used in web development, data science, and automation.
 Python's simple syntax makes it great for beginners.
 Many companies use Python for their projects."""
 
-    with open(filename, 'w') as f:
+    with open(filename, 'w', encoding='utf-8') as f:
         f.write(content)
     print(f"Created {filename}")
+
+
+def _read_text(filename):
+    """Helper: read a file and return its full text."""
+    with open(filename, 'r', encoding='utf-8') as f:
+        return f.read()
+
+
+def _tokenize_words_remove_punct(text):
+    """
+    Normalize to lowercase and remove punctuation for word-based analyses.
+    Replace punctuation with spaces, then split on whitespace.
+    """
+    import string
+    translator = str.maketrans({ch: ' ' for ch in string.punctuation})
+    clean = text.lower().translate(translator)
+    return [w for w in clean.split() if w]
 
 
 def count_words(filename):
@@ -30,9 +47,10 @@ def count_words(filename):
     Returns:
         int: Total number of words
     """
-    # TODO: Open file and count words
-    # Hint: Use split() to separate words
-    pass
+    # Open file and count words (normalize by removing punctuation)
+    text = _read_text(filename)
+    words = _tokenize_words_remove_punct(text)
+    return len(words)
 
 
 def count_lines(filename):
@@ -45,8 +63,8 @@ def count_lines(filename):
     Returns:
         int: Total number of lines
     """
-    # TODO: Open file and count lines
-    pass
+    with open(filename, 'r', encoding='utf-8') as f:
+        return sum(1 for _ in f)
 
 
 def count_characters(filename, include_spaces=True):
@@ -60,9 +78,11 @@ def count_characters(filename, include_spaces=True):
     Returns:
         int: Total number of characters
     """
-    # TODO: Open file and count characters
-    # If include_spaces is False, don't count spaces
-    pass
+    text = _read_text(filename)
+    if include_spaces:
+        return len(text)
+    # Exclude whitespace (spaces, tabs, newlines, etc.)
+    return sum(1 for ch in text if not ch.isspace())
 
 
 def find_longest_word(filename):
@@ -73,11 +93,14 @@ def find_longest_word(filename):
         filename (str): Name of the file to analyze
 
     Returns:
-        str: The longest word found
+        str: The longest word found (lowercased), or "" if none
     """
-    # TODO: Find the longest word
-    # Hint: You might need to remove punctuation
-    pass
+    text = _read_text(filename)
+    words = _tokenize_words_remove_punct(text)
+    if not words:
+        return ""
+    # If there are ties, max() returns the first encountered
+    return max(words, key=len)
 
 
 def word_frequency(filename):
@@ -91,16 +114,11 @@ def word_frequency(filename):
     Returns:
         dict: Dictionary with words as keys and frequencies as values
     """
-    import string
-
     frequency = {}
-
-    # TODO: Open file
-    # TODO: Read all words
-    # TODO: Convert to lowercase
-    # TODO: Remove punctuation (use string.punctuation)
-    # TODO: Count frequency of each word
-
+    text = _read_text(filename)
+    words = _tokenize_words_remove_punct(text)
+    for w in words:
+        frequency[w] = frequency.get(w, 0) + 1
     return frequency
 
 
