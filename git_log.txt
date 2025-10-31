@@ -1,0 +1,65 @@
+commit 159dedc772d9af01cb2fd0c8db52b21b3c54d9b5
+Author: Azam Abu El Hassan <azam.abuelhassan@unil.ch>
+Date:   Fri Oct 31 09:41:48 2025 +0000
+
+    Fix invalid multiplication symbol in docstring
+
+commit 1ee4e9269b25b1f9f4584f4bc451fc263cc5783c
+Author: Azam Abu El Hassan <azam.abuelhassan@unil.ch>
+Date:   Fri Oct 31 09:38:58 2025 +0000
+
+    Initial commit: Add README
+
+commit 1c2b00c1a25e3e50de2ff2ee4fe61736ca9f2efe
+Author: Azam Abu El Hassan <azam.abuelhassan@unil.ch>
+Date:   Fri Oct 31 09:10:32 2025 +0000
+
+    Add:changes
+
+commit bd0d0d879a2e90e81fd2e1a00fdf1d93411a8e83
+Author: Azam Abu El Hassan <azam.abuelhassan@unil.ch>
+Date:   Fri Oct 31 09:04:43 2025 +0000
+
+    add:changes
+
+commit 47140fae60fdaf8b1282aa48064c6c6ab17fc202
+Author: Azam Abu El Hassan <azam.abuelhassan@unil.ch>
+Date:   Fri Oct 31 09:02:32 2025 +0000
+
+    add:changes
+
+commit f15dc9472ec0f8cd9b1b2f3e239ce7cc0e8f7129
+Author: Azam Abu El Hassan <azam.abuelhassan@unil.ch>
+Date:   Mon Oct 13 13:06:37 2025 +0000
+
+    Initial commit: Add README
+
+commit f39dcc9a7f306d91c62a3060507c35e48e978edc
+Author: Azam Abu El Hassan <azam.abuelhassan@unil.ch>
+Date:   Mon Oct 13 13:03:52 2025 +0000
+
+    Initial commit: Add README
+
+commit ca80a30ad11024231110e6a38c17d985802e834e
+Author: Azam Abu El Hassan <azam.abuelhassan@unil.ch>
+Date:   Mon Oct 13 13:00:12 2025 +0000
+
+    Initial commit: Add README
+
+commit 084cf5c720acd27053d1cf90ef31c694bd371037
+Author: Azam Abu El Hassan <azam.abuelhassan@unil.ch>
+Date:   Mon Oct 13 12:56:40 2025 +0000
+
+    Initial commit: Add README
+
+commit 7bcb689e6ec93cc64526a8c7be6547d031f5ef09
+Author: Anna Smirnova <anna.smirnova@unil.ch>
+Date:   Mon Sep 29 14:44:57 2025 +0200
+
+    Add GitHub Classroom autograding configuration
+
+commit 2dc2daa38eab9338834bf27a431ee90c92a89e2c
+Author: github-classroom[bot] <66690702+github-classroom[bot]@users.noreply.github.com>
+Date:   Mon Sep 29 11:49:46 2025 +0000
+
+    Initial commit
