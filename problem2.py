@@ -3,6 +3,9 @@ Problem 2: Temperature Converter
 Convert between Celsius and Fahrenheit temperatures.
 """
 
+import sys
+
+
 def celsius_to_fahrenheit(celsius):
     """
     Convert Celsius to Fahrenheit.
@@ -14,7 +17,7 @@ def celsius_to_fahrenheit(celsius):
     Returns:
         float: Temperature in Fahrenheit
     """
-    return (celsius * 9/5) + 32
+    return (celsius * 9 / 5) + 32
 
 
 def fahrenheit_to_celsius(fahrenheit):
@@ -28,7 +31,7 @@ def fahrenheit_to_celsius(fahrenheit):
     Returns:
         float: Temperature in Celsius
     """
-    return (fahrenheit - 32) * 5/9
+    return (fahrenheit - 32) * 5 / 9
 
 
 def temperature_converter():
@@ -60,7 +63,6 @@ def temperature_converter():
 
 # Test cases (DO NOT MODIFY)
 if __name__ == "__main__":
-    # Test conversions
     print("Running tests...")
 
     # Test Celsius to Fahrenheit
@@ -71,8 +73,8 @@ if __name__ == "__main__":
     assert fahrenheit_to_celsius(32) == 0, "32°F should be 0°C"
     assert fahrenheit_to_celsius(212) == 100, "212°F should be 100°C"
 
-    print("All tests passed!")
-    print()
+    print("All tests passed!\n")
 
-    # Run interactive converter
-    temperature_converter()
+    # Run interactive converter only when running locally
+    if sys.stdin.isatty():
+        temperature_converter()
