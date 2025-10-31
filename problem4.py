@@ -3,6 +3,10 @@ Problem 4: File Word Counter
 Process text files and perform various analyses.
 """
 
+import string
+import sys
+
+
 def create_sample_file(filename="sample.txt"):
     """
     Create a sample text file for testing.
@@ -31,7 +35,6 @@ def _tokenize_words_remove_punct(text):
     Normalize to lowercase and remove punctuation for word-based analyses.
     Replace punctuation with spaces, then split on whitespace.
     """
-    import string
     translator = str.maketrans({ch: ' ' for ch in string.punctuation})
     clean = text.lower().translate(translator)
     return [w for w in clean.split() if w]
@@ -47,7 +50,6 @@ def count_words(filename):
     Returns:
         int: Total number of words
     """
-    # Open file and count words (normalize by removing punctuation)
     text = _read_text(filename)
     words = _tokenize_words_remove_punct(text)
     return len(words)
@@ -81,7 +83,6 @@ def count_characters(filename, include_spaces=True):
     text = _read_text(filename)
     if include_spaces:
         return len(text)
-    # Exclude whitespace (spaces, tabs, newlines, etc.)
     return sum(1 for ch in text if not ch.isspace())
 
 
@@ -99,14 +100,12 @@ def find_longest_word(filename):
     words = _tokenize_words_remove_punct(text)
     if not words:
         return ""
-    # If there are ties, max() returns the first encountered
     return max(words, key=len)
 
 
 def word_frequency(filename):
     """
     Return a dictionary of word frequencies.
-    Convert words to lowercase and remove punctuation.
 
     Args:
         filename (str): Name of the file to analyze
@@ -133,18 +132,14 @@ def analyze_file(filename):
     print("-" * 40)
 
     try:
-        # Display all analyses
         print(f"Lines: {count_lines(filename)}")
         print(f"Words: {count_words(filename)}")
         print(f"Characters (with spaces): {count_characters(filename, True)}")
         print(f"Characters (without spaces): {count_characters(filename, False)}")
         print(f"Longest word: {find_longest_word(filename)}")
 
-        # Display top 5 most common words
         print("\nTop 5 most common words:")
         freq = word_frequency(filename)
-
-        # Sort by frequency and get top 5
         top_words = sorted(freq.items(), key=lambda x: x[1], reverse=True)[:5]
         for word, count in top_words:
             print(f"  '{word}': {count} times")
@@ -157,17 +152,16 @@ def analyze_file(filename):
 
 def main():
     """Main function to run the file analyzer."""
-    # Create sample file
+    # Create sample file and analyze it
     create_sample_file()
-
-    # Analyze the sample file
     analyze_file("sample.txt")
 
-    # Allow user to analyze their own file
-    print("\n" + "=" * 40)
-    user_file = input("Enter a filename to analyze (or press Enter to skip): ").strip()
-    if user_file:
-        analyze_file(user_file)
+    # Avoid input() when running in non-interactive environments (like autograding)
+    if sys.stdin.isatty():
+        print("\n" + "=" * 40)
+        user_file = input("Enter a filename to analyze (or press Enter to skip): ").strip()
+        if user_file:
+            analyze_file(user_file)
 
 
 if __name__ == "__main__":
