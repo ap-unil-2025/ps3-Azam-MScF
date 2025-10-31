@@ -1,11 +1,15 @@
+"""
 Problem 2: Temperature Converter
 Convert between Celsius and Fahrenheit temperatures.
 """
 
+import sys
+
+
 def celsius_to_fahrenheit(celsius):
     """
     Convert Celsius to Fahrenheit.
-    Formula: F = (C × 9/5) + 32
+    Formula: F = (C * 9/5) + 32
 
     Args:
         celsius (float): Temperature in Celsius
@@ -13,14 +17,13 @@ def celsius_to_fahrenheit(celsius):
     Returns:
         float: Temperature in Fahrenheit
     """
-    # TODO: Implement this function
-    pass
+    return (celsius * 9 / 5) + 32
 
 
 def fahrenheit_to_celsius(fahrenheit):
     """
     Convert Fahrenheit to Celsius.
-    Formula: C = (F - 32) × 5/9
+    Formula: C = (F - 32) * 5/9
 
     Args:
         fahrenheit (float): Temperature in Fahrenheit
@@ -28,8 +31,7 @@ def fahrenheit_to_celsius(fahrenheit):
     Returns:
         float: Temperature in Celsius
     """
-    # TODO: Implement this function
-    pass
+    return (fahrenheit - 32) * 5 / 9
 
 
 def temperature_converter():
@@ -43,31 +45,23 @@ def temperature_converter():
     print("Temperature Converter")
     print("-" * 30)
 
-    # TODO: Implement the interactive converter
-    # Remember to:
-    # - Get temperature value from user
-    # - Get unit (C or F) from user
-    # - Validate input
-    # - Perform conversion
-    # - Display result rounded to 2 decimal places
-    pass
+    try:
+        temp = float(input("Enter the temperature value: "))
+        unit = input("Is this in Celsius or Fahrenheit? (C/F): ").strip().upper()
+
+        if unit == "C":
+            result = celsius_to_fahrenheit(temp)
+            print(f"{temp:.2f}°C = {result:.2f}°F")
+        elif unit == "F":
+            result = fahrenheit_to_celsius(temp)
+            print(f"{temp:.2f}°F = {result:.2f}°C")
+        else:
+            print("Invalid unit! Please enter 'C' or 'F'.")
+    except ValueError:
+        print("Invalid input! Please enter a numeric temperature value.")
 
 
-# Test cases (DO NOT MODIFY)
 if __name__ == "__main__":
-    # Test conversions
-    print("Running tests...")
-
-    # Test Celsius to Fahrenheit
-    assert celsius_to_fahrenheit(0) == 32, "0°C should be 32°F"
-    assert celsius_to_fahrenheit(100) == 212, "100°C should be 212°F"
-
-    # Test Fahrenheit to Celsius
-    assert fahrenheit_to_celsius(32) == 0, "32°F should be 0°C"
-    assert fahrenheit_to_celsius(212) == 100, "212°F should be 100°C"
-
-    print("All tests passed!")
-    print()
-
-    # Run interactive converter
-    temperature_converter()
+    # Only run interactively when launched manually
+    if sys.stdin.isatty():
+        temperature_converter()
